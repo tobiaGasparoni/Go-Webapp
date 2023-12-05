@@ -1,11 +1,12 @@
 package handlers
 
 import (
+	"encoding/json"
+	"log"
 	"net/http"
 
 	"github.com/tobiaGasparoni/Go-Webapp/pkg/config"
 	"github.com/tobiaGasparoni/Go-Webapp/pkg/models"
-	"github.com/tobiaGasparoni/Go-Webapp/pkg/renderer"
 )
 
 // Repo the respository used by the handlers
@@ -28,25 +29,45 @@ func NewHandlers(r *Repository) {
 	Repo = r
 }
 
-// Home is the home page handler
-func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	remoteIP := r.RemoteAddr
-	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
+func (m *Repository) Products(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 
-	renderer.RenderTemplate(w, "home.page.html", &models.TemplateData{})
+	resp := []models.Product{}
+	resp = append(resp, models.Product{
+		Name:     "Laptop",
+		Price:    3411,
+		Category: "Electronics",
+	})
+	resp = append(resp, models.Product{
+		Name:     "SmartPhone",
+		Price:    343,
+		Category: "Electronics",
+	})
+	resp = append(resp, models.Product{
+		Name:     "The Lord of the Rings",
+		Price:    343,
+		Category: "Books",
+	})
+
+	jsonResp, err := json.Marshal(resp)
+	if err != nil {
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+	}
+	w.Write(jsonResp)
 }
 
-// About is the about page handler
-func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
-	// Perform some logic
-	stringMap := make(map[string]string)
-	stringMap["test"] = "Hello, again"
+func (m *Repository) ProductDetail(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 
-	remoteIP := m.App.Session.GetString(r.Context(), "remote_ip")
-	stringMap["remote_ip"] = remoteIP
+	resp := models.Product{
+		Name:     "Laptop",
+		Price:    3411,
+		Category: "Electronics",
+	}
 
-	// send the data to the template
-	renderer.RenderTemplate(w, "about.page.html", &models.TemplateData{
-		StringMap: stringMap,
-	})
+	jsonResp, err := json.Marshal(resp)
+	if err != nil {
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+	}
+	w.Write(jsonResp)
 }

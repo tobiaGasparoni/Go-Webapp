@@ -8,7 +8,6 @@ import (
 
 	"github.com/tobiaGasparoni/Go-Webapp/pkg/config"
 	"github.com/tobiaGasparoni/Go-Webapp/pkg/handlers"
-	"github.com/tobiaGasparoni/Go-Webapp/pkg/renderer"
 
 	"github.com/alexedwards/scs/v2"
 )
@@ -33,18 +32,10 @@ func main() {
 
 	app.Session = session
 
-	tmpl_cache, err := renderer.CreateTemplateCache()
-	if err != nil {
-		log.Fatal("cannot create template cache")
-	}
-
-	app.TemplateCache = tmpl_cache
 	app.UseCache = false
 
 	repo := handlers.NewRepo(&app)
 	handlers.NewHandlers(repo)
-
-	renderer.NewTemplates(&app)
 
 	fmt.Println(fmt.Sprintf("Starting application on port %s", portNumber))
 
@@ -53,6 +44,6 @@ func main() {
 		Handler: router(&app),
 	}
 
-	err = server.ListenAndServe()
+	err := server.ListenAndServe()
 	log.Fatal(err)
 }
