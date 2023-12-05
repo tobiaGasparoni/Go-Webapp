@@ -1,9 +1,10 @@
 package main
 
 import (
-	"myapp/pkg/config"
-	"myapp/pkg/handlers"
 	"net/http"
+
+	"github.com/tobiaGasparoni/Go-Webapp/pkg/config"
+	"github.com/tobiaGasparoni/Go-Webapp/pkg/handlers"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"

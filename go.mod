@@ -1,4 +1,4 @@
-module myapp
+module github.com/tobiaGasparoni/Go-Webapp
 
 go 1.21.3
 

@@ -4,10 +4,11 @@ import (
 	"bytes"
 	"html/template"
 	"log"
-	"myapp/pkg/config"
-	"myapp/pkg/models"
 	"net/http"
 	"path/filepath"
+
+	"github.com/tobiaGasparoni/Go-Webapp/pkg/config"
+	"github.com/tobiaGasparoni/Go-Webapp/pkg/models"
 )
 
 var app *config.AppConfig

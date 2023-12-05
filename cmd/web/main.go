@@ -3,11 +3,12 @@ package main
 import (
 	"fmt"
 	"log"
-	"myapp/pkg/config"
-	"myapp/pkg/handlers"
-	"myapp/pkg/renderer"
 	"net/http"
 	"time"
+
+	"github.com/tobiaGasparoni/Go-Webapp/pkg/config"
+	"github.com/tobiaGasparoni/Go-Webapp/pkg/handlers"
+	"github.com/tobiaGasparoni/Go-Webapp/pkg/renderer"
 
 	"github.com/alexedwards/scs/v2"
 )

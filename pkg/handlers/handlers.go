@@ -1,10 +1,11 @@
 package handlers
 
 import (
-	"myapp/pkg/config"
-	"myapp/pkg/models"
-	"myapp/pkg/renderer"
 	"net/http"
+
+	"github.com/tobiaGasparoni/Go-Webapp/pkg/config"
+	"github.com/tobiaGasparoni/Go-Webapp/pkg/models"
+	"github.com/tobiaGasparoni/Go-Webapp/pkg/renderer"
 )
 
 // Repo the respository used by the handlers
