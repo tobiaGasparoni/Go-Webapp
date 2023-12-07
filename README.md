@@ -1,9 +1,25 @@
 # Go-Webapp
 
-To run the project
+## Running the project
 
-`go run cmd/web/*.go`
+`docker-compose up`
+
+## Package management
 
 To remove unused downloaded packages
 
 `go mod tidy`
+
+## Testing
+
+To run all test files in the current directory (with verbose flag)
+
+`go test -v`
+
+To see test coverage
+
+`go test -cover`
+
+To see more details on the test coverage as an HTML file
+
+`go test -coverprofile=coverage.out && go tool cover -html=coverage.out`
