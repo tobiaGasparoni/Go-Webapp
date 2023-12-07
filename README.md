@@ -4,6 +4,8 @@
 
 `docker-compose up`
 
+Then access the server through the exposed by docker port `8000`
+
 ## Package management
 
 To remove unused downloaded packages
