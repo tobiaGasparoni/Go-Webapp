@@ -7,3 +7,9 @@ type Product struct {
 	Price    int
 	Category string
 }
+
+type InputProduct struct {
+	Name     string `json:"name"`
+	Price    int    `json:"price"`
+	Category string `json:"category"`
+}

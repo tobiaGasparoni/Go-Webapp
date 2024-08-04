@@ -17,8 +17,8 @@ func router(app *config.AppConfig) http.Handler {
 	mux.Use(NoSurf)
 	mux.Use(SessionLoad)
 
-	mux.Get("/products", handlers.Repo.Products)
-	mux.Get("/products/detail", handlers.Repo.ProductDetail)
+	mux.Get("/products", handlers.Repo.GetAllProducts)
+	mux.Post("/products", handlers.Repo.CreateProduct)
 
 	fileServer := http.FileServer(http.Dir("./static/"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
